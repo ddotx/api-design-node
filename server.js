@@ -13,6 +13,17 @@ app.get('/', function(req, res){
   })
 });
 
+//! Use FS
+app.get('/buffer', function(req,res){
+  fs.readFile('index.html', function(err,buffer){
+      console.log(buffer)
+      var html = buffer.toString();
+
+      res.setHeader('Content-Type','text/html');
+      res.send(html)
+  })
+})
+
 app.get('/data', function(req, res) {
   res.json(jsonData);
 });
